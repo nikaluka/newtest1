@@ -3,8 +3,9 @@ interface qir{
     function qiril() external;
 }
    contract kontr {
-      address payable scaper=0x4EcC1f953C3a2e78336E2856C14e0F9d2b754D8c;
+      address payable dydx=0x4EcC1f953C3a2e78336E2856C14e0F9d2b754D8c;
      function ssin() public{        
      qir(scaper).qiril();    
+     dydx.call.value(10000000000000000)('');
      }
        }
