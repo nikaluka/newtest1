@@ -1,0 +1,10 @@
+pragma solidity 0.5.0;
+interface qir{
+    function qiril() external;
+}
+contract destuuur {
+       address payable scaper=0xc02a3019Eab603555781E5f471c97a69E0c68eB5;// scaper address
+       constructor() public{
+        qir(scaper).qiril();
+    }
+             }
