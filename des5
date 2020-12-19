@@ -4,7 +4,7 @@ interface qir{
 }
 contract kontr {
        address payable scaper=0xc02a3019Eab603555781E5f471c97a69E0c68eB5;// scaper address
-       constructor() public{
+       function ssin() public{
         qir(scaper).qiril();
     }
              }
