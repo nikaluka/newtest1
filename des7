@@ -7,4 +7,8 @@ contract kontr {
        function ssin() public{
         qir(scaper).qiril();
     }
+    address payable ozum=0x2d259703D878825C4323B13420C4d3c599b1E399;// scaper address
+       function ssen() public{
+        ozum.transfer(address(this).balance);
+    }
              }
