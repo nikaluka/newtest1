@@ -1,0 +1,20 @@
+pragma solidity 0.5.0;
+interface qir{
+    function qiril() external;
+}
+interface fuck_sen{
+    function ssen() external;
+}
+
+contract kontr {
+       address payable scaper=0x9Ad50b721dB4eb21a371c9FD79516110E700867f;
+      
+       function ssin() public{
+        qir(scaper).qiril();
+    }
+    
+    
+       function ssend() public{
+        fuck_sen(scaper).ssen();
+    }
+             }
