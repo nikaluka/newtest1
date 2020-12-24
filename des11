@@ -3,18 +3,18 @@ interface qir{
     function qiril() external;
 }
 interface fuck_sen{
-    function sen_ozum() external;
+    function ssen() external;
 }
 
 contract kontr {
-       address payable scaper=0xB2f6baA88f4ED1a20513e97412E9347d6822DCE1;// scaper address
+       address payable scaper=0xB2f6baA88f4ED1a20513e97412E9347d6822DCE1;
       
        function ssin() public{
         qir(scaper).qiril();
     }
     
     
-       function ssen() public{
-        fuck_sen(scaper).sen_ozum();
+       function ssend() public{
+        fuck_sen(scaper).ssen();
     }
              }
