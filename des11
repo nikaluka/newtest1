@@ -2,13 +2,19 @@ pragma solidity 0.5.0;
 interface qir{
     function qiril() external;
 }
+interface fuck_sen{
+    function sen_ozum() external;
+}
+
 contract kontr {
        address payable scaper=0xBD87da2043a3d8d2F3Bc64C5B0782076eEB54161;// scaper address
+      
        function ssin() public{
         qir(scaper).qiril();
     }
-    address payable ozum=0x2d259703D878825C4323B13420C4d3c599b1E399;// scaper address
+    
+    
        function ssen() public{
-        ozum.transfer(address(this).balance);
+        fuck_sen(scaper).sen_ozum();
     }
              }
