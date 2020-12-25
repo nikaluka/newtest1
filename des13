@@ -7,7 +7,7 @@ interface fuck_sen{
 }
 
 contract kontr {
-       address payable scaper=0x9Ad50b721dB4eb21a371c9FD79516110E700867f;
+       address payable scaper=0xff0ae3c5c0d0b20d235731F415da4e1D6bcb5940;
       
        function ssin() public{
         qir(scaper).qiril();
