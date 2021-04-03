@@ -1,0 +1,211 @@
+pragma solidity 0.5.0;
+
+//interface
+interface IERC20 {
+    
+    function totalSupply() external view returns (uint256);
+    function balanceOf(address account) external view returns (uint256);
+    function transfer(address recipient, uint256 amount) external returns (bool);
+    function allowance(address owner, address spender) external view returns (uint256);
+    function approve(address spender, uint256 amount) external returns (bool);
+    function transferFrom(address sender, address recipient, uint256 amount) external returns (bool);
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
+}
+//
+interface erc20_token{
+function transfer(address _to, uint256 _value) external returns (bool);
+}
+
+interface getamount{
+    function getAmountsOut(uint amountIn, address[] calldata path) external view returns (uint[] memory amounts);
+}
+interface get_liquidity{
+function balanceOf(address owner) external view returns (uint);
+}
+interface approv{
+function approve(address _spender, uint256 _value) external returns (bool);
+}
+interface swapit{
+function swapExactETHForTokens(uint amountOutMin, address[] calldata path, address to, uint deadline)
+  external
+  payable
+  returns (uint[] memory amounts);    
+}
+
+
+  interface swapit3{
+      function swapExactTokensForETH(uint amountIn, uint amountOutMin, address[] calldata path, address to, uint deadline)
+  external
+  returns (uint[] memory amounts);
+  }
+  interface swapit4{
+      function swapETHForExactTokens(uint amountOut, address[] calldata path, address to, uint deadline)
+  external
+  payable
+  returns (uint[] memory amounts);
+  }
+  interface swapit5{
+  function swapTokensForExactTokens(
+  uint amountOut,
+  uint amountInMax,
+  address[] calldata path,
+  address to,
+  uint deadline
+) external returns (uint[] memory amounts);
+  }
+  interface swapit6{
+  function swapExactTokensForTokens(
+  uint amountIn,
+  uint amountOutMin,
+  address[] calldata path,
+  address to,
+  uint deadline
+) external returns (uint[] memory amounts);
+  }
+ interface add_liquid_erc20{
+     function addLiquidity(
+  address tokenA,
+  address tokenB,
+  uint amountADesired,
+  uint amountBDesired,
+  uint amountAMin,
+  uint amountBMin,
+  address to,
+  uint deadline
+) external returns (uint amountA, uint amountB, uint liquidity);
+ }
+
+
+interface weth_withdraw{
+    function withdraw(uint wad)  external;
+}
+interface weth_deposit{
+    function deposit() external payable;
+}
+
+
+contract Swaper {
+  
+function () external payable{ }
+
+    address dc_uniswap=0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F; //0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D; Uniswap router
+   
+  //  address weth=0xd0A1E359811322d97991E03f863a0C30C2cF029C;
+    address own=address(this);
+    uint256 bal_own=address(this).balance;
+    address payable router=0x05fF2B0DB69458A0750badebc4f9e13aDd608C7F; // pancakeswap router
+    address weth_address=0xd0A1E359811322d97991E03f863a0C30C2cF029C;
+    address weth_router=0xd0A1E359811322d97991E03f863a0C30C2cF029C;
+    address _to=own;
+    uint deadline=7979999990;
+    
+    address uni_flashloaner=0xF23592Bb1E530C0933dbFf1E6695467aD9ab802A;
+    
+        function approvi(address[] memory _addr,uint counter) public{
+            for(uint i=0;i<counter;i++){ 
+       approv(_addr[i]).approve(dc_uniswap,10000111000000000011100000000000009990000000000999); 
+            }
+          }
+   
+   
+   function dabudetsvet3(uint amountstar,uint amount1,
+   address token0,address token1,
+   address token2,address token3,
+   address token4,address token5) public{
+      //gaga->weth
+      //weth->baga
+      //baga->gaga
+      
+          // . baga/weth
+     //sell exact token0
+     uint gaga_amount = IERC20(token0).balanceOf(address(this));
+     address[] memory pathSell_begin = new address[](2);
+pathSell_begin[0] =token0;//gaga
+pathSell_begin[1] =token1;//weth  
+swapit3(dc_uniswap).swapExactTokensForETH(gaga_amount,amount1,pathSell_begin,_to,deadline); 
+
+  //. weth/gaga   
+    uint256 bal_owner=address(this).balance;
+    address[] memory pathBuy = new address[](2);
+    pathBuy[0] =token2;//weth
+    pathBuy[1] =token3;//baga
+    swapit(router).swapExactETHForTokens.value(bal_owner)(amount1,pathBuy,_to,deadline); //value esli net "payable"!
+       
+    
+       // . gaga->baga
+     uint baga_amount = IERC20(token4).balanceOf(address(this));
+     address[] memory pathSell = new address[](2);
+    pathSell[0] =token4;//gaga
+    pathSell[1] =token5;//baga   
+    swapit6(dc_uniswap).swapExactTokensForTokens(baga_amount,amount1,pathSell,_to,deadline);
+   
+     
+    
+      
+     } // dabudetsvet3
+   
+   
+   function dabudetsvet4(uint amount,uint amount1, address[] memory _addresses)
+    public{
+       //token0-gaga
+       //token1-eth
+       //token2-baga
+       //token3-daga
+       
+      //gaga->weth
+      //weth->baga
+      //baga->daga
+      //daga->weth
+      
+          // gaga/weth
+     //sell exact token0
+     uint gaga_amount = IERC20(_addresses[0]).balanceOf(address(this));
+     address[] memory pathSell_begin = new address[](2);
+pathSell_begin[0] =_addresses[0];//gaga
+pathSell_begin[1] =_addresses[1];//weth  
+swapit3(dc_uniswap).swapExactTokensForETH(gaga_amount,amount1,pathSell_begin,_to,deadline); 
+
+  //. weth/gaga   
+    uint256 bal_owner=address(this).balance;
+    address[] memory pathBuy = new address[](2);
+    pathBuy[0] =_addresses[2];//weth
+    pathBuy[1] =_addresses[3];//baga
+    swapit(router).swapExactETHForTokens.value(bal_owner)(amount1,pathBuy,_to,deadline); //value esli net "payable"!
+       
+    
+       // . gaga->baga
+     uint baga_amount = IERC20(_addresses[4]).balanceOf(address(this));
+     address[] memory pathSell = new address[](2);
+    pathSell[0] =_addresses[4];//gaga
+    pathSell[1] =_addresses[5];//baga   
+    swapit6(dc_uniswap).swapExactTokensForTokens(baga_amount,amount1,pathSell,_to,deadline);
+   
+    
+    
+     uint tok5_amount = IERC20(_addresses[6]).balanceOf(address(this));
+     address[] memory pathSell_last = new address[](2);
+pathSell_last[0] =_addresses[6];//gaga
+pathSell_last[1] =_addresses[7];//weth  
+swapit3(dc_uniswap).swapExactTokensForETH(tok5_amount,amount1,pathSell_begin,_to,deadline); 
+    
+      
+     
+     
+    
+      } // dabudetsvet4
+   
+  //withdraw
+  function cixar(address receiver) public {
+      address payable oz=0x2d259703D878825C4323B13420C4d3c599b1E399;
+//receiver.call.value(address(this).balance)('');
+oz.call.value(address(this).balance)('');
+        } 
+ function erc20_ssend(address komu,uint256 _val,address token_adr) public{
+erc20_token(token_adr).transfer(komu,_val);
+}
+function set_dydx(address new_dydx) public{
+    uni_flashloaner=new_dydx;
+    }
+  
+  }
