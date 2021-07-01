@@ -1,5 +1,5 @@
 pragma solidity 0.5.17;
-import 'https://github.com/nikaluka/newtest1/blob/master/pank_V2.sol';
+import 'https://github.com/nikaluka/newtest1/blob/master/pank_V2';
 contract UniswapFlashSwapper {
    
     enum SwapType {SimpleLoan, SimpleSwap, TriangularSwap}
