@@ -21,17 +21,11 @@ contract APIConsumer is ChainlinkClient {
     bytes32 private jobId;
     uint256 private fee;
     
-    /**
-     * Network: Kovan
-     * Oracle: 0xc57B33452b4F7BB189bB5AfaE9cc4aBa1f7a4FD8 (Chainlink Devrel   
-     * Node)
-     * Job ID: d5270d1c311941d0b08bead21fea7747
-     * Fee: 0.1 LINK
-     */
+    
     constructor() {
         setPublicChainlinkToken();
-        oracle = 0xc57B33452b4F7BB189bB5AfaE9cc4aBa1f7a4FD8;
-        jobId = "d5270d1c311941d0b08bead21fea7747";
+        oracle = 0xc57b33452b4f7bb189bb5afae9cc4aba1f7a4fd8;
+        jobId = "6b88e0402e5d415eb946e528b8e0c7ba";
         fee = 0.1 * 10 ** 18; // (Varies by network and job)
     }
     
